@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>img懒加载</title>
+        <style>
+        
+        </style>
+    </head>
+<body>
+    <h3>图片懒加载</h3>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://img.bz1111.com/d7/2012-8/2012081210374.jpg?x-oss-process=image/resize,w_800" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+    <img src="./load.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" style="width:1000px;height:200px;"/>
+
+</body>
+<script src="./jquery-3.2.1.min.js"></script>
+<script>
+    var n=0,
+        imgNum=$('img').length,
+        img=$('img');
+    lazyload();
+    $(window).scroll(lazyload);
+    function lazyload(event) {
+            //console.log('hah');
+            for (var i = n; i < imgNum; i++) {
+                if (img.eq(i).offset().top < parseInt($(window).height()) + parseInt($(window).scrollTop())) {
+                    if (img.eq(i).attr("src") == "./load.jpg") {
+                        var src = img.eq(i).attr("data-src");
+                        img.eq(i).attr("src", src);
+                        n = i + 1;
+                    }
+                }
+            }
+    }
+</script>
+</html>
